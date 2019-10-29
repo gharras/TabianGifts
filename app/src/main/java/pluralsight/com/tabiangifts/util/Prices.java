@@ -18,7 +18,13 @@ public class Prices {
         PRICES = new HashMap<String, BigDecimal>();
         Products products = new Products();
         for(Product product : products.PRODUCTS){
-            PRICES.put(String.valueOf(product.getSerial_number()), product.getPrice());
+            if(product.hasSalePrice()){
+                PRICES.put(String.valueOf(product.getSerial_number()), product.getSale_price());
+            }
+            else{
+                PRICES.put(String.valueOf(product.getSerial_number()), product.getPrice());
+            }
+
         }
     }
 
